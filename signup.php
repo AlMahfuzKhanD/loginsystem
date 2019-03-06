@@ -7,7 +7,7 @@
  */
 
 include "db.php";
-
+############## sign up ####################
 if(isset($_POST['submit_signup'])){
     $first_name = $_POST['farstname'];
     $last_name = $_POST['lastname'];
@@ -16,15 +16,38 @@ if(isset($_POST['submit_signup'])){
     $password = $_POST['password'];
 
 
-    $query = "INSERT INTO signup (email, username, first_name, last_name, password) VALUES ('{$email}', '{$username}', '{$first_name}', '{$last_name}', '{$password}')";
+    $query = "SELECT * FROM users";
+    $select_all_users= mysqli_query($conn,$query);
+    $catagories_counts = mysqli_num_rows($select_all_users);
 
-    $create_user_query = mysqli_query($conn,$query);
-    if($create_user_query){
-        echo "";
-    }else{
-        die("QUERY FAILED ".mysqli_error($conn));
+    while ($row = mysqli_fetch_array($select_all_users)){
+        $db_username = $row['username'];
+
+
     }
+
+    if($username == $db_username ){
+        echo "user name already taken";
+
+    }else{
+        $query = "INSERT INTO users (email, username, first_name, last_name, password) VALUES ('{$email}', '{$username}', '{$first_name}', '{$last_name}', '{$password}')";
+
+        $create_user_query = mysqli_query($conn,$query);
+        if($create_user_query){
+            echo "";
+        }else{
+            die("QUERY FAILED ".mysqli_error($conn));
+        }
+    }
+
+
+
+
+
 }
+
+
+
 ?>
 
 <!doctype html>
@@ -46,22 +69,26 @@ if(isset($_POST['submit_signup'])){
 
 
         <div class="col-sm-12 col-md-12">
-            <form action="" method="post">
-                <h2>WelCome <?php echo $first_name." ".$last_name; ?> Please Login</h2>
+            <form action="login.php" method="post">
+                <h2>Sign Up Successful. Please Login</h2>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1"  placeholder="Enter email" name="email">
+                    <label for="exampleInputEmail1">User Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Enter username" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
                 </div>
 
 
                 <div>
-                    <a href="login.php" class="btn btn-success" name="submit_login">
+
+                    <button href="login.php" class="btn btn-success" name="submit_login">
                         <i class="" ></i> Login
-                    </a>
+                    </button>
+
+
+
                     <a href="index.php" class="btn btn-primary">Home Page</a>
                 </div>
 

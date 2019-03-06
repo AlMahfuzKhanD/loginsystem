@@ -24,25 +24,25 @@ include "db.php";
                 <h2>New here? Please sign up</h2>
                 <div class="form-group">
                     <label for="ffirstname">First Name</label>
-                    <input type="text" class="form-control" placeholder="Enter your first name" name="farstname">
+                    <input type="text" class="form-control" placeholder="Enter your first name" name="farstname" required>
                     <label for="lastname">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Enter last name" name="lastname">
+                    <input type="text" class="form-control" placeholder="Enter last name" name="lastname" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1"  placeholder="Enter email" name="email">
+                    <input type="email" class="form-control" id="exampleInputEmail1"  placeholder="Enter email" name="email" required>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
 
                 <div class="form-group">
                     <label for="username">User Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Enter an unique user name" name="username">
+                    <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Enter an unique user name" name="username" required>
 
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control"  placeholder="Password" name="password">
+                    <input type="password" class="form-control"  placeholder="Password" name="password" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary" name="submit_signup">Sign Up</button>
@@ -53,12 +53,12 @@ include "db.php";
             <form action="login.php" method="post">
                 <h2>Have an account? Please login</h2>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1"  placeholder="Enter email" name="email">
+                    <label for="exampleInputEmail1">User Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Enter Username" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
                 </div>
 
                 <button type="submit" class="btn btn-success" name="submit_login">Login</button>
